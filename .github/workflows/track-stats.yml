@@ -1,0 +1,52 @@
+name: Track Repository Stats
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # Her gün 03:17 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: github-repo-stats
+  cancel-in-progress: false
+
+jobs:
+  discover-repos:
+    name: Discover Public Repositories
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.discover.outputs.matrix }}
+      count: ${{ steps.discover.outputs.count }}
+    steps:
+      - name: Discover all public repos
+        id: discover
+        env:
+          GH_TOKEN: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
+        run: |
+          REPOS=$(gh api users/arikusi/repos --paginate \
+            --jq '[.[] | select(.fork == false and .private == false and .name != "repo-stats") | .full_name]')
+
+          COUNT=$(echo "$REPOS" | jq 'length')
+          MATRIX=$(echo "$REPOS" | jq -c '{repo: .}')
+
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Found $COUNT public repositories:"
+          echo "$REPOS" | jq -r '.[]'
+
+  run-stats:
+    name: Stats — ${{ matrix.repo }}
+    needs: discover-repos
+    if: needs.discover-repos.outputs.count != '0'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.discover-repos.outputs.matrix) }}
+      fail-fast: false
+      max-parallel: 1
+    steps:
+      - name: Run github-repo-stats
+        uses: jgehrcke/github-repo-stats@v1.4.2
+        with:
+          repository: ${{ matrix.repo }}
+          ghtoken: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
+          databranch: github-repo-stats
+          ghpagesprefix: https://arikusi.github.io/repo-stats
