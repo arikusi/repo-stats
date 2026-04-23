@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/arikusi/deepseek-mcp-server,79,64
+/arikusi/deepseek-mcp-server/blob/main/llms-full.txt,7,7
+/arikusi/deepseek-mcp-server/blob/main/docker-compose.yml,2,2
+/arikusi/deepseek-mcp-server/blob/main/README.md,2,1
+/arikusi/deepseek-mcp-server/blob/main/.dockerignore,1,1
+/arikusi/deepseek-mcp-server/blob/main/package.json,1,1
+/arikusi/deepseek-mcp-server/blob/main/server.json,1,1
+/arikusi/deepseek-mcp-server/blob/main/src/prompts/advanced.ts,1,1
+/arikusi/deepseek-mcp-server/blob/main/src/prompts/function-calling.ts,1,1
+/arikusi/deepseek-mcp-server/commits,1,1
