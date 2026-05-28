@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/arikusi/deepseek-mcp-server,115,101
+/arikusi/deepseek-mcp-server/security,6,2
+/arikusi/deepseek-mcp-server/issues/3,5,2
+/arikusi/deepseek-mcp-server/blob/5e1302171e9941bacc2ec2f83fe313c914614328/llms-full.txt,4,1
+/arikusi/deepseek-mcp-server/security/advisories/GHSA-fh3r-g96v-f578,3,1
+/arikusi/deepseek-mcp-server/blob/main/README.md,2,2
+/arikusi/deepseek-mcp-server/tree/main/src,2,2
+/arikusi/deepseek-mcp-server/blob/main/src/prompts/core.ts,2,1
+/arikusi/deepseek-mcp-server/tree/main/src/prompts,2,1
+/arikusi/deepseek-mcp-server/blob/main/.npmignore,1,1
