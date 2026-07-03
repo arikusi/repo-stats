@@ -50,3 +50,36 @@ jobs:
           ghtoken: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
           databranch: github-repo-stats
           ghpagesprefix: https://arikusi.github.io/repo-stats
+
+  # Pages branch-tetiklemeli modda her push ayri deploy baslatiyor ve
+  # ust uste binen deploylar "Deployment failed" bildirimi yagdiriyordu.
+  # Bunun yerine tum repolarin istatistigi toplandiktan sonra tek seferde
+  # deploy ediyoruz. Pages build_type = workflow olmali.
+  deploy-pages:
+    name: Publish Reports to GitHub Pages
+    needs: run-stats
+    if: ${{ !cancelled() && needs.run-stats.result != 'skipped' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout data branch
+        uses: actions/checkout@v4
+        with:
+          ref: github-repo-stats
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload reports artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
