@@ -13,11 +13,9 @@ Runs daily via GitHub Actions using [jgehrcke/github-repo-stats](https://github.
 
 ## Reports
 
-Stats are published via GitHub Pages:
+All reports are published via GitHub Pages: **[arikusi.github.io/repo-stats](https://arikusi.github.io/repo-stats/)**
 
-* [deepseek-mcp-server](https://arikusi.github.io/repo-stats/arikusi/deepseek-mcp-server/)
-* [nakkas](https://arikusi.github.io/repo-stats/arikusi/nakkas/)
-* [supervis](https://arikusi.github.io/repo-stats/arikusi/supervis/)
+The index page lists every tracked repository and is regenerated on each run. Individual reports live at `https://arikusi.github.io/repo-stats/arikusi/<repo>/`.
 
 ## Setup
 
