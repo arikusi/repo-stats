@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/arikusi/deepseek-mcp-server,92,62
+/arikusi/deepseek-mcp-server/pulls,14,3
+/arikusi/deepseek-mcp-server/blob/main/CONTRIBUTING.md,4,4
+/arikusi/deepseek-mcp-server/blob/main/llms-full.txt,4,4
+/arikusi/deepseek-mcp-server/releases/tag/v1.7.0,3,3
+/arikusi/deepseek-mcp-server/releases/tag/v1.8.0,3,3
+/arikusi/deepseek-mcp-server/issues,2,2
+/arikusi/deepseek-mcp-server/discussions,2,1
+/arikusi/deepseek-mcp-server/actions/metrics/performance,1,1
+/arikusi/deepseek-mcp-server/actions/metrics/usage,1,1
